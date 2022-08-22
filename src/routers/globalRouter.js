@@ -8,5 +8,3 @@ globalRouter.get("/", trending);
 globalRouter.get("/join", join);
 
 export default globalRouter;
-6  
-src/routers/userRouter.js
