@@ -1,0 +1,12 @@
+//- 데이터를 받을 수 있는 partial, 
+  다른 데이터를 포함하지만 같은 형태의 html을 보여준다.
+  코드 재사용 component
+  mixVideo는 videoController.js의 videos 배열을 뿌려준다.
+mixin mixVideo(info)
+    div
+        h4=info.title
+        ul
+            li #{info.rating}/5.
+            li #{info.comments} comments.
+            li Posted #{info.createdAt}.
+            li #{info.views} views. 
