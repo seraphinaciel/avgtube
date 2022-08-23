@@ -1,4 +1,9 @@
 extends base.pug
 
 block content
-    h1 Edit Video 
+    h4 Change Title of #{video.id}
+    //- method의 기본값은 get : 검색할 때 사용(구글, 네이버)
+        post : 파일 전달, DB를 바꾸는 data를 보낼 때, 로그인 시 사용
+    form(method="POST")
+        input(name="title", placeholder="Video Title", value=video.title, required)
+        input(value="Save", type="submit")
