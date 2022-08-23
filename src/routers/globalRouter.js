@@ -1,6 +1,6 @@
 import express from "express";
-import { join } from "../controllers/userController";
-import { trending } from "../controllers/videoController";
+import { join, login } from "../controllers/userController";
+import { trending, search } from "../controllers/videoController";
 
 // 글로벌 라우터는 깔끔하게 보이게 하기 위해 사용할 뿐임. 컨트롤러 필요없음(유저, 비디오에 들어가기 때문)
 const globalRouter = express.Router();
@@ -11,5 +11,7 @@ router는 controller와 url의 관리를 쉽게 해주는 미니 어플리케이
 */
 globalRouter.get("/", trending);
 globalRouter.get("/join", join);
+globalRouter.get("/login", login);
+globalRouter.get("/search", search);
 
 export default globalRouter;
