@@ -7,12 +7,16 @@ const videoRouter = express.Router();
 videoRouter.get("/upload", upload);
 
 /*
-:파라미터
-아규먼트 사용 가능, url안에 변수를 포함시킬 수 있게 해준다. 얘가 없으면 모든 변수마다 라우터를 하나씩 만들어 줘야함.
-ex. https://nomadcoders.co/wetube/lectures/2661(<- 파라미터)
+정규표현식
+:id(\\w+) 모든 문자 숫자 선택
+:id(\\d+) 모든 숫자 선택
+Routing https://expressjs.com/ko/guide/routing.html
+정규표현식 테스트
+  https://www.regexpal.com
+  https://regexr.com/
 */
-videoRouter.get("/:id", see);
-videoRouter.get("/:id/edit", edit);
-videoRouter.get("/:id/delete", deleteVideo);
+videoRouter.get("/:id(\\d+)", see);
+videoRouter.get("/:id(\\d+)/edit", edit);
+videoRouter.get("/:id(\\d+)/delete", deleteVideo);
 
 export default videoRouter;
