@@ -35,12 +35,28 @@ export const getEdit = (req, res) => {
   const video = videos[id - 1];
   return res.render("edit", { pageTitle: `Editing: ${video.title}`, video});
 };
-// 변경사항 저장해 주는 변수. 가짜(?) 데이터베이스이기 때문에 열공할 필요 없음
 export const postEdit = (req, res) => {
   const { id } = req.params;
-  // edit.put form의 내용을 req.body(params이라고 함)로 받는다.
   const { title } = req.body;
   videos[id - 1].title = title;
-  // res.redirect() : 브라우저가 자동으로 (...)으로 이동하도록 하는 것(redirect로 return 시키는 법)
   return res.redirect(`/videos/${id}`);
+};
+
+export const getUpload = (req, res) => {
+  return res.render("upload", { pageTitle: "Upload Video" });
+};
+export const postUpload = (req, res) => {
+  // req.body는 오직 POST request만 받는다.
+  // 비디오 배열 추가 예정
+  const { title } = req.body;
+  const newVideo = {
+    title,
+    rating: 0,
+    comments: 0,
+    createdAt: "just now",
+    views: 0,
+    id: videos.length + 1,
+  };
+  videos.push(newVideo);
+  return res.redirect("/");
 };
