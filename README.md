@@ -1,5 +1,4 @@
 # avergers tube
-***
 * / → Home
 * /join → Join
 * /login → Login
@@ -15,18 +14,19 @@
 * /videos/:id/delete -> Delete Video
 * /videos/upload -> Upload Video
 
+***
 ## Express
 
 ### get request
-#### **const PORT = 4000;**
-4000 port(Door)만 listen(대화)하는 중, 4000 포트로 request 보냄
+#### const PORT = 4000;
+> 4000 port(Door)만 listen(대화)하는 중, 4000 포트로 request 보냄
 
 
 #### req, res
 req : 리퀘스트에 대한 정보 보냄
 res : 리퀘스트에 어떻게 응답하느냐, 어떻게에 해당되는 메소드는 굉장히 많다(ex. send)
 
-
+***
 ### middlewares & controllers
 **미들웨어=핸들러=컨트롤러**
 1. Request at response 중간의 소프트웨어 = 컨트롤러
@@ -38,6 +38,7 @@ res : 리퀘스트에 어떻게 응답하느냐, 어떻게에 해당되는 메�
 7. 응답하는 마지막 콘트롤러에는 next()함수를 사용하지 않는다.
 <br>
 <br>
+
 ```js
 const routerLogger = (req, res, next) => {
   Return res.send(“www”)
@@ -48,6 +49,7 @@ const methodLogger = (req, res, next) => {
 Const home = (req, res) => res.send(“hello”)
 App.get(“/“, methodLogger, routerLogger, home);
 ```
+
 * express : methodLogger, req, res 다 있는데 응답가능? 싫음 next()호출해
 * methodLogger : 놉(next())
 * express : routerLogger, req, res 있는데 응답 가능?
@@ -64,6 +66,7 @@ app.get(“/“, home);
 app.get(“/“, login);
 
 #### 미들웨어 구분법?
+
 ```js
 const logger = (req, res, next) => {
   console.log(`${req.method} ${req.url}`);
