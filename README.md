@@ -137,7 +137,9 @@ HTTP request 는 어떤 route(url) 에 대한 HTTP Method 요청이고 서버는
 ## pug
 
 > 기본 작업 디렉토리(package.json, /youtube/views) → src 디렉토리로 변경(/youtube/src/views)
+
 > **render** : 000.pug 찾아서 html로 변환해 유저에게 보여줘라.
+
 > **res.redirect()** : 브라우저가 자동으로 이동(redirect로 return 시키는 법)
 
 ### 변수명
