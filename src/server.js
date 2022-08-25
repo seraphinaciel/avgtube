@@ -1,3 +1,4 @@
+import "./db";
 import express from "express"; // package
 import morgan from "morgan";
 import globalRouter from "./routers/globalRouter";

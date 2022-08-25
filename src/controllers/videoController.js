@@ -46,7 +46,6 @@ export const getUpload = (req, res) => {
   return res.render("upload", { pageTitle: "Upload Video" });
 };
 export const postUpload = (req, res) => {
-  // req.body는 오직 POST request만 받는다.
   // 비디오 배열 추가 예정
   const { title } = req.body;
   const newVideo = {
