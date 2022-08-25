@@ -86,7 +86,7 @@ controller와 url의 관리를 쉽게 해주는 미니 어플리케이션<br>
 공통 시작부분(주제, ex. /join, /edit)을 기반으로 url을 그룹화 하는 것
 
 
-> **app.get("라우터", 핸들러))**
+**app.get("라우터", 핸들러))**
 > * 라우터(url을 통해서 리퀘스트들을 전달하는 문)
 > * 핸들러(함수, 받은 리퀘스트를 리스폰즈 해주는건 핸들러의 몫이다.)
 
@@ -106,7 +106,7 @@ HTTP request 는 어떤 route(url) 에 대한 HTTP Method 요청이고 서버는
 > node.js 서버로 구성된 웹 환경에서 HTTP request 로그를 관리하기 위한 미들웨어이다.
 
 #### export → import!
-모든 파일은 독립적인 모듈, 다른 파일에서 사용(공유)하려면 
+> 모든 파일은 독립적인 모듈, 다른 파일에서 사용(공유)하려면 
 1. default
    * 무조건 "하나"만 임포트 하는거라서 마음대로 함수명을 지정 가능
 2. 2개 이상 import, export 
@@ -118,9 +118,9 @@ HTTP request 는 어떤 route(url) 에 대한 HTTP Method 요청이고 서버는
 ***
 
 ### url parameters ":"
-videoRouter.get("**/:id**", see);
-아규먼트 사용 가능, url안에 변수를 포함시킬 수 있게 해준다. 얘가 없으면 모든 변수마다 라우터를 하나씩 만들어 줘야함.
-ex. https://nomadcoders.co/wetube/lectures/**2661**(<- 파라미터)
+> videoRouter.get("**/:id**", see);
+> 아규먼트 사용 가능, url안에 변수를 포함시킬 수 있게 해준다. 얘가 없으면 모든 변수마다 라우터를 > 하나씩 만들어 줘야함.
+> ex. https://nomadcoders.co/wetube/lectures/**2661**(<- 파라미터)
 
 ***
 
@@ -137,7 +137,8 @@ ex. https://nomadcoders.co/wetube/lectures/**2661**(<- 파라미터)
 ## pug
 
 > 기본 작업 디렉토리(package.json, /youtube/views) → src 디렉토리로 변경(/youtube/src/views)
-> render : 000.pug 찾아서 html로 변환해 유저에게 보여줘라.
+> **render** : 000.pug 찾아서 html로 변환해 유저에게 보여줘라.
+> **res.redirect()** : 브라우저가 자동으로 이동(redirect로 return 시키는 법)
 
 ### 변수명
 * #{변수명} : 오직 하나의 값만 가지며 텍스트와 함께 쓸 때 사용한다. title #{pageTitle} | avgTube
@@ -170,8 +171,9 @@ ex. https://nomadcoders.co/wetube/lectures/**2661**(<- 파라미터)
 * 다른 데이터를 포함하지만 같은 형태의 html을 보여준다.
 * 코드 재사용 component
 
-> **res.redirect()** : 브라우저가 자동으로 이동(redirect로 return 시키는 법)
-> **express.urlencoded({ extended: true})**
+***
+
+### **express.urlencoded({ extended: true})**
    1. express는 form을 이해하지 못하여 위의 미들웨어를 사용하여 form의 구문울 분석하는 일종의 구문 분석기. 
    2. videoController.js의 postEdit req.body로 받은 폼태그 값을 js object 형식으로 분석하여 사용이 가능하게 해준다.
    3. 각 아이디의 수정 페이지에서 폼에 내용을 입력(value)하면 내용이 저장된다.
