@@ -14,3 +14,8 @@
 ### /videos/:id/edit -> Edit Video
 ### /videos/:id/delete -> Delete Video
 ### /videos/upload -> Upload Video
+
+
+#### get과 post의 차이?
+
+#### middlewares?
