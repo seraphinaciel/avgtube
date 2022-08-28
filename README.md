@@ -137,7 +137,9 @@ HTTP request 는 어떤 route(url) 에 대한 HTTP Method 요청이고 서버는
 ## pug
 
 > 기본 작업 디렉토리(package.json, /youtube/views) → src 디렉토리로 변경(/youtube/src/views)
+
 > **render** : 000.pug 찾아서 html로 변환해 유저에게 보여줘라.
+
 > **res.redirect()** : 브라우저가 자동으로 이동(redirect로 return 시키는 법)
 
 ### 변수명
@@ -223,12 +225,13 @@ db.once("open", handleOpen); 오직 한번만 이벤트 발생
 
 ***
 
-### CRUD(create, read, update, delete) : check point
+### CRUD(create, read, update, delete)
 Video.find({}, (error, videos) => {});
 1. call back : js에서 기다림을 표현하는 방법
 **Video.find({}**, (error, document) => {});
 몽구스는 **강조**된 부분을 디비에서 불러온다. 아무것도 리턴되면 안된다.
 
+***
 
 ### model = schema
 > 데이터가 어떤 형태(형식)로 구성될지만 설정, 실존값은 유저가 작성하게 둔다.
