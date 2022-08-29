@@ -44,11 +44,12 @@ src
 # 목차
 ***
 ## Express(Node.js)
-### get request
-### const PORT = 4000;
-### req, res
-### export → import!
-### 정규표현식
+<a target="_blank" href="/note/async&await.md"> 바로가기 &rarr;</a>
+* get request
+* const PORT = 4000;
+* req, res
+* export → import!
+* 정규표현식
 
 ***
 ## middlewares
