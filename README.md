@@ -40,11 +40,9 @@ src
 * init.js
 * server.js
 
-
 # 목차
 ***
-## Express(Node.js)
-<a target="_blank" href="/note/async&await.md"> 바로가기 &rarr;</a>
+## Express(Node.js) <a target="_blank" href="/note/async&await.md"> 바로가기 &rarr;</a>
 * get request
 * const PORT = 4000;
 * req, res
@@ -52,49 +50,49 @@ src
 * 정규표현식
 
 ***
-## middlewares
-### middlewares & controllers
-### use() 
-### 미들웨어 구분법?
-### express.urlencoded
-### morgan 패키지
+## middlewares <a target="_blank" href="/note/middleware.md"> 바로가기 &rarr;</a>
+*  middlewares & controllers
+*  use() 
+*  미들웨어 구분법?
+*  express.urlencoded
+*  morgan 패키지
 
 ***
-## Router
-### router란?
-### app.get()
-### get, post 축약
-### url parameters ":"
+## Router <a target="_blank" href="/note/routers.md"> 바로가기 &rarr;</a>
+* router란?
+* app.get()
+* get, post 축약
+* url parameters ":"
 
 ***
-## pug
-### 변수명
-### mixin
-### Iteration(반복)
-### form method=""의 get과 post의 차이?
+## pug <a target="_blank" href="/note/pug.md"> 바로가기 &rarr;</a>
+* 변수명
+* mixin
+* Iteration(반복)
+* form method=""의 get과 post의 차이?
 
 ***
-## MONGO DB
-### 설치
-### on / once
-### 명령어
-### CRUD(create, read, update, delete)
+## MONGO DB <a target="_blank" href="/note/mongoDB.md"> 바로가기 &rarr;</a>
+* 설치
+* on / once
+* 명령어
+* CRUD(create, read, update, delete)
 
 ***
-## 동기와 비동기란?
-### 동기
-### 비동기
-### 비동기 처리 패턴, callback과 promise, async, await
+## 동기와 비동기란? <a target="_blank" href="/note/async&await.md"> 바로가기 &rarr;</a>
+* 동기
+* 비동기
+* 비동기 처리 패턴, callback과 promise, async, await
 
 ***
-## schema
-### model = schema
-### 속성
-### form input에서도 길이 지정이 가능한데 굳이 DB에다 지정하는 이유는?
+## schema <a target="_blank" href="/note/schema.md"> 바로가기 &rarr;</a>
+* model = schema
+* 속성
+* form input에서도 길이 지정이 가능한데 굳이 DB에다 지정하는 이유는?
 
 ***
-## Function
-### render
-### redirect
-### split, map
+## Function <a target="_blank" href="/note/function.md"> 바로가기 &rarr;</a>
+* render
+* redirect
+* split, map
 
