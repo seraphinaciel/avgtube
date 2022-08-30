@@ -1,4 +1,7 @@
-# middleware
+# middleware(express)
+> request를 중간에 가로채서 작업을 하고 next를 호출 한 다음 request를 계속 이어서 진행
+> 흐름을 방해하지 않는다.
+
 ## middlewares & controllers
 **미들웨어=핸들러=컨트롤러**
 1. Request at response 중간의 소프트웨어 = 컨트롤러
@@ -62,3 +65,12 @@ const handleHome = (req, res) => {
 
 ## morgan 패키지
 > node.js 서버로 구성된 웹 환경에서 HTTP request 로그를 관리하기 위한 미들웨어이다.
+
+***
+# middleware(mongoose)
+> document에 무슨 일이 생기기 전 혹은 후에 미들웨어를 적용한다.
+> save, update하기 전,후로 미들웨어 적용하거나 function을 실행할 수 있다.
+> 흐름을 방해하지 않는다.
+> 모델이 생성되기 전에 만들어야 한다.
+
+## hook or middleware

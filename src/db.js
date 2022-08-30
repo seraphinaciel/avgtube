@@ -1,7 +1,11 @@
 // mongoose 연결
 import mongoose from "mongoose";
 
-mongoose.connect("mongodb://127.0.0.1:27017/avgtube");
+mongoose.connect("mongodb://127.0.0.1:27017/avgtube", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+});
 
 const db = mongoose.connection;
 
