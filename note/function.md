@@ -24,3 +24,4 @@ hashtags.split(",").map((word) => `#${word}`),
 ```
 * split : string을 "," 기준으로 분리한다
 * map : 분리된 단어 앞에 #를 붙여 **새로운 배열**을 만들어준다.
+* .startsWith("#") ? word : `#${word}` : 해쉬태그로 시작하면 word를 리턴하고, 없을 때는 #word를 리턴한다

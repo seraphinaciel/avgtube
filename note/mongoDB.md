@@ -8,8 +8,12 @@
 6. vscode에서 npm i mongoose 다운
 
 ## on / once
-db.on("error", handleError); 여러번 계속 이벤트 발생
-db.once("open", handleOpen); 오직 한번만 이벤트 발생
+* db.on("error", handleError); 여러번 계속 이벤트 발생
+* db.once("open", handleOpen); 오직 한번만 이벤트 발생
+
+## findOne() / findById()
+* findOne() 내가 보내는 모든 condition을 적용시킨다, 예)조회수가 25인 영상을 찾는다
+* findById() id로 영상을 찾아낼 수 있다
 
 ## 명령어
 * use avgtube

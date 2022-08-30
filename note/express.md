@@ -6,8 +6,9 @@
 > 4000 port(Door)만 listen(대화)하는 중, 4000 포트로 request 보냄
 
 ## req, res
-> req : 리퀘스트에 대한 정보 보냄
-> res : 리퀘스트에 어떻게 응답하느냐, 어떻게에 해당되는 메소드는 굉장히 많다(ex. send)
+> req : 리퀘스트에 대한 정보 보냄<br>
+> res : 리퀘스트에 어떻게 응답하느냐, 어떻게에 해당되는 메소드는 굉장히 많다(ex. send)<br>
+> req.params - 라우터가 주는 익스프레스의 기능
 
 ## export → import!
 > 모든 파일은 독립적인 모듈, 다른 파일에서 사용(공유)하려면 
@@ -23,6 +24,9 @@
 * :id(\\w+) 모든 문자 숫자 선택
 * :id(\\d+) 모든 숫자 선택
 * Routing https://expressjs.com/ko/guide/routing.html
+
+* mongoose id 정의 : 24 바이트 16진수 문자열 → 0~9, a~f가 들어가는 24자 이하의 문자열
+* :id([0-9a-f]{24})
 
 ## 정규표현식 테스트
   https://www.regexpal.com<br>
