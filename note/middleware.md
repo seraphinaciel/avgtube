@@ -73,4 +73,10 @@ const handleHome = (req, res) => {
 > 흐름을 방해하지 않는다.
 > 모델이 생성되기 전에 만들어야 한다.
 
-## hook or middleware
+
+* findOne() 내가 보내는 모든 condition을 적용시킨다, 예)조회수가 25인 영상을 찾는다
+어떤 조건도 지정할 수 있다. 영상 제목 검색 등
+* findById() id를 인자(argument)로 받아 영상을 찾아낼 수 있다
+* findByIdAndUpdate(업데이트 아이디, 업데이트 내용)
+* exists() filter가 필요(아무 조건)하며 영상의 어떤 property도 필터가 가능. 비디오 객체를 받는 대신 true/false를 받는다. 비디오 객체를 템플릿으로 보내야 할 때는 사용하지 않는다. 존재 여부만 알아야 때 사용
+* findOneAndDelete : 대부분 항상 사용하는 삭제

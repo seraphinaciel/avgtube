@@ -8,6 +8,8 @@
 ## req, res
 > req : 리퀘스트에 대한 정보 보냄<br>
 > res : 리퀘스트에 어떻게 응답하느냐, 어떻게에 해당되는 메소드는 굉장히 많다(ex. send)<br>
+> req.body - form에서 method=post로 보내면 내용을 받을 수 있다.<a target="_blank" href="/note/pug.md"> get, post 자세히 보기 &rarr;</a>>
+> req.query - form에서 method=get로 보낸 정보들을 (확인)볼 수 있다.
 > req.params - 라우터가 주는 익스프레스의 기능
 
 ## export → import!

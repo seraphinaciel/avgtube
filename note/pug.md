@@ -30,6 +30,11 @@
 ```
 
 ### form method=""의 get과 post의 차이?
-* get(기본값) : 검색할 때 사용(구글, 네이버)
+* get(기본값) : 검색할 때 사용(구글, 네이버), url에 정보가 보이도록 한다.
 * post : 파일 전달, DB를 바꾸는 data를 보낼 때, 로그인 시 사용
       => req.body는 오직 POST request만 받는다.
+
+## 속성
+input(placeholder="Search by title", **name="keyword"**, type="text")
+검색 인풋에 검색어 등장.<br>
+검색어 입력하기 전에 undefined지만, 입력하면 http://localhost:5000/search?**keyword=first** 라고 나온다.
