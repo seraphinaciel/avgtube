@@ -14,14 +14,14 @@
 
 ## Iteration(반복) - each, while 지원
 > 배열, 객체의 모든 요소에 대해 특정 행동을 취할 때 사용. 
-```
+```pug
    each x in y => each x in [1,2,3,4,5]
                => js에서 배열 y를 가져옴, arraylist y의 item인 x를 반복 나열
                => x는 배열 y의 item인 객체이므로 x.title 가능
          ~
    else        => 반복할 값이 없으면 추가, 자동으로 배열을 검색해서 굳이 if가 필요없다
 ```
-```js
+```pug
    each video in videos // iteration 사용방법
         //- /mixins/video.pug에 argument인 video로 정보(배열의 객체 값) 전달 
         +mixVideo(video) // mixin 사용방법
