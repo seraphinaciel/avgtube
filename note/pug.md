@@ -71,4 +71,35 @@ input(placeholder="Search by title", **name="keyword"**, type="text")
        default 
            p you have #{friends} friends.
            - break
+
+   //- 파일에 다른 파일 매핑 <= 템플릿 엔진의 핵심
+   include includes/head.pug
+   style
+       include style.css
+   script 
+       include script.js
+
+   //- ----
+   //- block & extends로 공통 템플릿 짜기
+       block : 원하는 데이터만 쏙
+       extends : 템플릿 상속
+       아래의 코드가 layout.pug 파일안에 있다고 생각하자
+   block content 
+   h3 발
+   block script
+   block script2
+   //- body.pug 파일의 코드
+   extends layout 
+   block content 
+       h2 블라블라
+   block script 
+       script(src="main.js")
+   append script2
+       script(src="common.js")
+   //- html 변환
+   <h2>블라블라</h2>
+   <h3>발</h3>
+   <script src="main.js"></script>
+   <script src="common.js"></script>
+   //- ----
 ```
