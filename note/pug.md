@@ -38,3 +38,37 @@
 input(placeholder="Search by title", **name="keyword"**, type="text")
 검색 인풋에 검색어 등장.<br>
 검색어 입력하기 전에 undefined지만, 입력하면 http://localhost:5000/search?**keyword=first** 라고 나온다.
+
+
+## 문법
+
+```pug
+   - const title = 'TITLE'
+   //- = 뒤에는 js 문법 사용 가능, #{변수}
+   p=title 
+   //- 태그=변수명 : 태그에 하나의 변수값만 삽입 할 때 사용한다.
+   p welcome to #{title}
+   button(class=title)  submit 
+   input(placeholder=title + 'search')
+
+   // Node Express.js
+   app.route("/").get((req, res) => {
+       res.render("index", { message: "Pug is HONEY" });
+   });
+   p.message #{message} // 노드에서의 템플릿 변수가 여기에 들어감
+
+   if isLoggedIn 
+       p IN
+   else 
+       p OUT 
+
+   - const friends = 2
+   case friends 
+       when 0
+           p you have no friends.
+       when 1
+           p you have very few friends. 
+       default 
+           p you have #{friends} friends.
+           - break
+```
