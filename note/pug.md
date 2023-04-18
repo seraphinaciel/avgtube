@@ -42,64 +42,275 @@ input(placeholder="Search by title", **name="keyword"**, type="text")
 
 ## 문법
 
+### basic
+
 ```pug
-   - const title = 'TITLE'
-   //- = 뒤에는 js 문법 사용 가능, #{변수}
-   p=title 
-   //- 태그=변수명 : 태그에 하나의 변수값만 삽입 할 때 사용한다.
-   p welcome to #{title}
-   button(class=title)  submit 
-   input(placeholder=title + 'search')
+doctype html
+html(lang="en")
+    head
+        title Pug
+        link(rel = "stylesheet", href="style.css")
+        style.
+            h1{color:red;}
+        script.
+            if (useingPug)
+                console.log("you are awesome")
+            else
+                console.log("use pug")
+        body
 
-   // Node Express.js
-   app.route("/").get((req, res) => {
-       res.render("index", { message: "Pug is HONEY" });
-   });
-   p.message #{message} // 노드에서의 템플릿 변수가 여기에 들어감
+            h1 Pug - node templete engine
+            #container.col
 
-   if isLoggedIn 
-       p IN
-   else 
-       p OUT 
+            figure
+                img(src="https://bit.ly/2bgFrvL", alt="Hello world")
+                figcaption Hello World
 
-   - const friends = 2
-   case friends 
-       when 0
-           p you have no friends.
-       when 1
-           p you have very few friends. 
-       default 
-           p you have #{friends} friends.
-           - break
+            picture
+                source(srcset="src/01.jpeg" media="(min-width:1200px)" type="image/jpeg")
 
-   //- 파일에 다른 파일 매핑 <= 템플릿 엔진의 핵심
-   include includes/head.pug
-   style
-       include style.css
-   script 
-       include script.js
+            //- 아래와 같은 방식은 권장하지 않는다고 함(보간 사용 권장)
+            p
+                | The word
+                ruby 안녕하세요
+                    rt 작은 주석, 발음 기호
 
-   //- ----
-   //- block & extends로 공통 템플릿 짜기
-       block : 원하는 데이터만 쏙
-       extends : 템플릿 상속
-       아래의 코드가 layout.pug 파일안에 있다고 생각하자
-   block content 
-   h3 발
-   block script
-   block script2
-   //- body.pug 파일의 코드
-   extends layout 
-   block content 
-       h2 블라블라
-   block script 
-       script(src="main.js")
-   append script2
-       script(src="common.js")
-   //- html 변환
-   <h2>블라블라</h2>
-   <h3>발</h3>
-   <script src="main.js"></script>
-   <script src="common.js"></script>
-   //- ----
+            //- 보간 사용(권장)
+            p.
+                마우스 커서를 #[abbr(title="TA DA! 설명 캡션 나오기!") 여기]에 올리면 설명 캡션이 생겨요!
+                #[mark 하이라이트] #[time(datetime="2023-04-17") 4. 17.]
+
+            p.
+                가운데 취소선 긋기! #[del del : 가운데 취소선] #[ins ins : 수정된 텍스트 강조]
+
+
+            p
+                | 텍스트 끊기 (가로스크롤 x)
+                | https://<wbr>www<wbr>.creativebloq<wbr>.com
+            //-
+                | https://
+                wbr
+                | www
+                wbr
+                | .creativebloq
+                wbr
+                | .com
+
+
+            p(translate="no") Brand Logo
+
+            //- filter -> :scss
+```
+
+### include
+
+> 파일에 다른 파일 매핑 **템플릿 엔진의 핵심**
+
+```pug
+include includes/head.pug
+style
+    include style.css
+script
+    include script.js
+```
+
+### block & extends로 공통 템플릿 짜기
+
+> `block` : 원하는 데이터만 쏙
+
+> `extends` : 템플릿 상속
+
+```pug
+//- layout.pug
+
+block content // body.pug > h2
+h3 제목이닷
+block script // body.pug > script
+block script2 // body.pug > script2
+
+//- body.pug 파일의 코드
+
+extends layout
+
+block content
+    h2 이게 진짜 제목!
+block script
+    script(src="main.js")
+append script2
+    script(src="common.js")
+```
+
+```html
+<!--html 변환-->
+
+<h2>이게 진짜 제목!</h2>
+<h3>제목이닷</h3>
+<script src="main.js"></script>
+<script src="common.js"></script>
+```
+
+### Interpolation 보간
+
+```pug
+.txt: a(href="#{email}" target="_blank") #{txt}, {email: 'mail@naver.com', txt: 'string interpolation'}
+    - var contxt = "tag interpolation";
+    p #[span contxt]
+```
+
+```html
+<div class="txt">
+  <a href="mail@naver.com" target="_blank">
+    string interpolation
+    <p>
+      <span>tag interpolation</span>
+    </p>
+  </a>
+</div>
+```
+
+#### code
+
+> `-` or `=` 사용
+
+```pug
+- const title = 'TITLE'
+p = title //- 태그=변수명 : 태그에 하나의 변수값만 삽입 할 때 사용한다.
+p welcome to #{title}
+button(class = title) submit
+input(placeholder = title + 'search')
+
+p = 'This is code is' + '<escaped>!' //- <p>This is code is &lt;escaped&gt;!</p> 보안상 변환
+p != 'This is code is' + '<escaped>!' //- <p>This is code is <escaped>!</p>
+
+//- js + pug
+- for(var x=0; x<3; x++) //- javascript
+    p item //- pug
+
+- const list = ["one", "two", "three"] //- javascript
+    each item in list //- pug each in
+        p=item //- pug
+```
+
+### Iteration
+
+> each in
+
+```pug
+ul.test1
+    each val, key in {1: 'one', 2: 'two', 3: 'three'}
+    li = key + ':' + val
+
+- var values = [];
+ul.test2
+each val in values.length ? values : ['There are no values']
+    li=val
+else
+    li Hoo!
+```
+
+```html
+<ul class="test1">
+  <li>1: one</li>
+  <li>2: two</li>
+  <li>3: three</li>
+</ul>
+
+<ul class="test2">
+  <li>There are no values</li>
+</ul>
+```
+
+```pug
+//- 랜더링 할 때 보내고 싶은 변수의 이름과 값(message: "Pug is HONEY")을 객체 안에 넣어서 보내면
+app.route("/").get((req, res) => {
+    res.render("index", { message: "Pug is HONEY" });
+});
+//- 노드에서의 템플릿 변수(message: "Pug is HONEY")가 여기에 들어감
+p.message #{message}
+
+//- if else
+if isLoggedIn
+    p IN
+else
+    p OUT
+
+//- case
+- const friends = 2
+case friends
+    when 0
+        p you have no friends.
+    when 1
+        p you have very few friends.
+    default
+        p you have #{friends} friends.
+        - break
+```
+
+```html
+<p class="message">Pug is HONEY</p>
+
+<p>IN</p>
+
+<p>you have 2 friends.</p>
+```
+
+### Attributes
+
+```pug
+//- error
+p(class='div-class' (click)='play()')
+
+//- ok
+p(class='div-class' , (click)='play()')
+p(class='div-class' ' (click) ' = 'play()')
+```
+
+```html
+<div class="div-class" (click)="play()"></div>
+```
+
+#### &attributes 구문
+
+> 개체를 요소의 속성으로 분해하는 데 사용
+
+```pug
+//- 객체 리터럴 사용
+div#foo(data-bar="foo")&attributes({'data-foo': 'bar'})
+
+//- 값이 객체인 변수 사용
+- var attributes = {};
+- attributes.class = 'baz';
+div#foo(data-bar="foo")&attributes(attributes)
+```
+
+```html
+<div id="foo" data-bar="foo" data-foo="bar"></div>
+<div class="baz" id="foo" data-bar="foo"></div>
+```
+
+> 암시 적 attributes 인수(믹스 인에 전달 된 속성에서 가져옵니다.) pug는 괄호의 내용을 속성/인수로 감지, 첫번째 괄호가 인수 목록인지 확인하기 때문에 두번째 구문 권장
+
+`+link(class="btn")`
+
+`+link()(class="btn")` ← 권장
+
+```pug
+
+mixin link(href, name)
+  //- attributes == {class: "btn"}
+  a(class!=attributes.class href=href)= name
+
++link('/foo', 'foo')(class="btn")
+    //- mixin link ( href, name ) ( attributes )
+
+mixin link2(href, name)
+  a(href=href)&attributes(attributes)= name
+
++link2('/foo', 'foo')(class="btn")
+
+
+```
+
+```html
+<a class="btn" href="/foo">foo</a>
 ```
